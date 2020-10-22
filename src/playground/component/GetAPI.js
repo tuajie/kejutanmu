@@ -15,15 +15,12 @@ import React from 'react';
 
 // const logo = require('http://localhost:1337/kontens');
 
-const bannerUrl = (bannerImage) = {
 
-}
-
-const GetAPI = (props, bannerUrl) => {
+const GetAPI = (props) => {
     return (
         <div className="GetAPIstyle">
             <h4 className="title">{props.title}</h4> 
-            <img src={props.banner[0].url} alt="banner" /> 
+            <img src={props.banner[0].formats.medium.url} alt="banner" /> 
             <p className="desc">{props.desc}</p>
         </div>
     )
