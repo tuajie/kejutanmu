@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.link_color{
+  color:red;
+}
+  
+.App-header {
+  background-color: #aeaeae; 
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+  

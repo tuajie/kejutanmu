@@ -1,0 +1,6 @@
+react :
+npm start
+
+strapi :
+cd strapi_kejutanmu
+npm run develop
