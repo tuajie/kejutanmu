@@ -1,13 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { actionGantiUser } from '../config/redux/action/actionApp';
 // import firebaseSetting from '../config/firebase/firebase'
 
 class Login extends Component {
+
+    // mendifinisikan bahwa : gantiUSER adalah props dari : gantiUsername
+    gantiUSER = () => {
+        this.props.gantiUsername()
+    }
+
     render(){
         return(
             <Fragment>
                 <div className="dada">
-                    <h2>Login Page {this.props.popupProps} </h2>
+                    {/* defaultnya adalah memanggil dari reducer */}
+                    <h2>Login Page {this.props.userName} </h2>
+                    {/* lalu di eksekusi ketika ada perintah onClick => ekesekusi : gantiUSER */}
+                    <button onClick={this.gantiUSER}>KLIK DISINI</button>
                 </div>
     
                 <div className="body-login">
@@ -20,8 +30,16 @@ class Login extends Component {
     }
 } 
 
+
+// memanggil dari file reducer, dimana di definisikan mana saja yg menjadi state bawaannya
  const reduxState = (state) => ({
-     popupProps: state.popup
+     popupProps: state.popup,
+     userName: state.user
  })
 
- export default connect(reduxState, null)(Login);
+ // membuat fungsi untuk memanggil: gantiUsername agar dapat di dispatch oleh : actionGantiUser
+ const reduxDispatch = (dispatch) => ({
+     gantiUsername: () => dispatch(actionGantiUser())
+ })
+
+ export default connect(reduxState, reduxDispatch)(Login);
