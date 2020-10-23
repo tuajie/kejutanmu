@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import firebaseSetting from '../config/firebase'
+import firebaseSetting from '../config/firebase/firebase'
 
 console.log('config firebase => ',firebaseSetting);
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-// import firebaseSetting from '../config/firebase'
+// import firebaseSetting from '../config/firebase/firebase'
 
  const Login = () =>{
      return(

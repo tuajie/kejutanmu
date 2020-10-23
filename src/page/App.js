@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router,  Route,  Link } from "react-router-dom";
-import Home from "./page/home";
-import Login from "./page/login";
-import Register from "./page/register";
-import Review from "./page/review-product";
-import About from "./page/about";
-import Ketentuan from "./page/ketentuan";
-import Product from "./page/detail-product";
+import Home from "./home";
+import Login from "./login";
+import Register from "./register";
+import Review from "./review-product";
+import About from "./about";
+import Ketentuan from "./ketentuan";
+import Product from "./detail-product";
 // import Playground from "./playground/playground"
   
 
