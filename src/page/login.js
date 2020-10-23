@@ -1,20 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 // import firebaseSetting from '../config/firebase/firebase'
 
- const Login = () =>{
-     return(
-        <Fragment>
-        <div className="dada">
-            <h2>Login Page</h2>
-        </div>
+class Login extends Component {
+    render(){
+        return(
+            <Fragment>
+                <div className="dada">
+                    <h2>Login Page {this.props.popupProps} </h2>
+                </div>
+    
+                <div className="body-login">
+                    <input className="form1" type="email" placeholder="email" />
+                    <input className="form1" type="password" placeholder="password" />         
+                    <button className="button-submit">Submit</button>
+                </div>
+            </Fragment>
+         )
+    }
+} 
 
-        <div className="body-login">
-            <input className="form1" type="email" placeholder="email" />
-            <input className="form1" type="password" placeholder="password" />         
-            <button className="button-submit">Submit</button>
-        </div>
-    </Fragment>
-     )
- }
+ const reduxState = (state) => ({
+     popupProps: state.popup
+ })
 
- export default Login;
+ export default connect(reduxState, null)(Login);
