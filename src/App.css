@@ -1,3 +1,14 @@
+ul{
+  list-style: none;
+}
+ul li{
+  float: left;
+  margin-right: 20px;
+}
+.clear{
+  clear: both;
+}
+
 .App {
   text-align: center;
 }
@@ -21,9 +32,9 @@
   
 .body-register{
   position: absolute;
-    width: 200px;
+    width: 400px;
     left: 50%;
-    margin-left: -100px;
+    margin-left: -200px;
     height: auto;
     top: 50%;
     margin-top: -100px;
@@ -31,13 +42,25 @@
     padding-top: 10px;
     padding-bottom: 20px;
 }
+.body-login{
+  position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    height: auto;
+    top: 50%;
+    margin-top: -100px;
+    background: #ff4c4c;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
 .form1{
-  width: auto;
-  padding: 10px 16px 10px 10px;
+  width: 84%;
+  padding: 4% 2% 4% 4%;
   margin: 10px 0;
   border-radius: 3px;
   border: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 .button-submit{
   border: none;

@@ -30,7 +30,8 @@ function App() {
               {/* <li>  <Link to="/playground">Playground</Link>   </li> */}
             </ul>
           </nav>
- 
+
+          <div className="clear"></div>
 
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
