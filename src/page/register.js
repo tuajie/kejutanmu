@@ -5,7 +5,11 @@ console.log('config firebase =>',firebaseSetting);
 
 const Register = () =>{
     return(
-        <div>Register Page</div>
+        <div className="body-register">
+            <input className="form1" type="email" placeholder="email" />
+            <input className="form1" type="password" placeholder="password" />         
+            <button className="button-submit">Submit</button>
+        </div>
     )
 }
 
