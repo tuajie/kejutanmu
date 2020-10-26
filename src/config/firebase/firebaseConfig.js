@@ -1,8 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// import 'firebase/firestore';
+import 'firebase/database';
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBGQMygbiFfr2joPNLaRT8WXOCq7pU6R1k",
     authDomain: "kejutanmu-b3770.firebaseapp.com",
     databaseURL: "https://kejutanmu-b3770.firebaseio.com",
@@ -16,6 +16,6 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   // firebase.analytics();
 
-var database = firebase.database();
+export const database = firebase.database();
 
-  export default firebase;
+export default firebase;

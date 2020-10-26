@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Button from '../component/atom/Button';
-import firebaseSetting from '../config/firebase/firebaseConfig';
+import Button from '../component/atom/Button'; 
 import { registerUserAPI } from '../config/redux/action/actionApp';
-
-console.log('config firebase => ',firebaseSetting);
-
+ 
 class Register extends Component {
     state = {
         email: '',

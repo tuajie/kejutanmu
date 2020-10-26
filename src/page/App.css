@@ -8,6 +8,13 @@ body {
 }
 button:focus { outline: none; }
 
+
+input, textarea { outline: none; }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -94,4 +101,38 @@ ul li{
 }
 .abu{ 
   background: #737373 ;
+}
+
+form{
+  width: 400px;
+  margin: 0 auto;
+  background: #aeaeae;
+  padding: 20px 0 0;
+}
+form textarea{
+  width: 91%;
+  padding: 2%;
+  min-height: 100px;
+  margin-top: 20px ;
+}
+
+form input{
+  width: 91%;
+  padding: 2%;
+}
+form button{
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.isi-firebase{
+  text-align: left;
+  margin: 0 auto;
+  width: 400px;
+  padding: 20px 0;
+}
+
+.isi-firebase h6{
+  font-size: 32px;
 }

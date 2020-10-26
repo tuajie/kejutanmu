@@ -1,5 +1,5 @@
 // kumpulan action untuk sebelum di ekesekusi ke reducer redux
-import firebaseSetting from '../../firebase/firebaseConfig';
+import firebaseSetting, { database } from '../../firebase/firebaseConfig';
 
 
 
@@ -53,13 +53,14 @@ export const loginUserAPI = (data) => (dispatch) => {
                     const dataUser = {
                         email: res.user.email,
                         uid: res.user.uid,
-                        emailVerified: res.user.emailVerified
+                        emailVerified: res.user.emailVerified,
+                        refreshToken: res.user.refreshToken
                     }
                     //jika sudah ada respon dari server, maka mengembalikan fungsi button nya menjadi semula lagi
                     dispatch({type: 'CHANGE_LOADING', value: false})
                     dispatch({type: 'CHANGE_LOGIN', value: true})
                     dispatch({type: 'CHANGE_USER', value: dataUser})
-                    masuk(true)
+                    masuk(dataUser)
                 })
                 // Handle Errors here.
                 .catch(function(error) { 
@@ -72,7 +73,13 @@ export const loginUserAPI = (data) => (dispatch) => {
                     gagal(false)
             })
         }
-    )
+    ) 
+}
 
-    
+export const addDataToAPI = (data) => (dispatch) => {
+    database.ref('konten' + data.userId).push({
+        title: data.title,
+        konten: data.konten,
+        date: data.date
+    })
 }

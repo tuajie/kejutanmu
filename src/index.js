@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom'; 
 import App from './page/App';
 import * as serviceWorker from './serviceWorker';
+import firebaseSetting from './config/firebase/firebaseConfig'
 
+console.log('configurasi asli firebase => ',firebaseSetting);
 
 ReactDOM.render(
   <React.StrictMode>
