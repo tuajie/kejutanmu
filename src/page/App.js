@@ -10,6 +10,7 @@ import Review from "./review-product";
 import About from "./about";
 import Ketentuan from "./ketentuan";
 import Product from "./detail-product";
+import Dashboard from "./dashboard";
 // import Playground from "./playground/playground"
 
  
@@ -30,6 +31,7 @@ function App() {
                 <li>  <Link to="/about">About</Link>   </li>
                 <li>  <Link to="/syarat-ketentuan">Syarat dan Ketentuan</Link> </li>
                 <li>  <Link to="/review">Review</Link>   </li>
+                <li>  <Link to="/dashboard">Dashboard</Link>   </li>
                 {/* <li>  <Link to="/playground">Playground</Link>   </li> */}
               </ul>
             </nav>
@@ -43,6 +45,7 @@ function App() {
             <Route path="/about" component={About} />
             <Route path="/syarat-ketentuan" component={Ketentuan} />
             <Route path="/review" component={Review} /> 
+            <Route path="/dashboard" component={Dashboard} /> 
             {/* <Route path="/playground" component={Playground} /> */}
 
 

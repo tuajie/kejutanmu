@@ -13,26 +13,23 @@ class Register extends Component {
     }
 
     // fungsi ini digunakan ketika "text area input di ketik", 
-    urusanIsiInputText = (e) => {
-        // console.log(e.target.id)
+    urusanIsiInputText = (e) => { 
         this.setState({
             [e.target.id]: e.target.value, 
         })
     } 
 
     // fungsi ini digunakan untuk mengeksekusi button ketika di klik
-    urusanButtonKlik = () => {
+    urusanButtonKlik = async () => {
         const {email, password} = this.state
         console.log('data seblum kirim : ', email, password)
-        this.props.registerAPI({email, password})
-        // this.setState({
-        //     isLoading: true
-        // })
-        // setTimeout(() => {
-        //     this.setState({
-        //         isLoading: false
-        //     })
-        // }, 3000) 
+        const res = await this.props.registerAPI({email, password}).catch(err => err);
+        if(res) {
+            this.setState({
+                email: '',
+                password: ''
+            })
+        }  
     }
     
     render(){
@@ -43,8 +40,8 @@ class Register extends Component {
                 </div>
 
                 <div className="body-register">
-                    <input id="email" className="form1" type="text" placeholder="email" onChange={this.urusanIsiInputText} />
-                    <input id="password" className="form1" type="password" placeholder="password" onChange={this.urusanIsiInputText} />
+                    <input id="email" className="form1" type="text" placeholder="email" onChange={this.urusanIsiInputText} value={this.state.email} />
+                    <input id="password" className="form1" type="password" placeholder="password" onChange={this.urusanIsiInputText} value={this.state.password} />
                     <Button diKlik={this.urusanButtonKlik} title="Register" loading={this.props.isLoading} />        
                 </div>
             </Fragment>
@@ -52,12 +49,16 @@ class Register extends Component {
     }
 }
 
+// fungsi ini untuk mendifinisikan bahwa nilai reduxState adalah sama dengan value dari isLoading
 const reduxState = (state) => ({
     isLoading: state.isLoading
 })
 
+// fungsi ini untuk memanggil dari action dari file actionApp.js, kemudian men dispatch registerUserAPI
+// agar bisa di gunakan di page register
 const reduxDispatch = (dispatch) => ({
     registerAPI: (data) => dispatch(registerUserAPI(data))
 })
- 
+
+// mengirimkan connect sebagai status jika page ini menggunakan redux secara global
 export default connect(reduxState, reduxDispatch)(Register);

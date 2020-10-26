@@ -1,11 +1,11 @@
 // kumpulan dari reducer redux, sebelum di eksekusi atau save ke store redux
 
-
+// kumpulan initialState reducer redux (global state status)
 const initialState = {
     popup: false,
     isLogin: false,
     isLoading: false,
-    user: 'BELOM ganti user'
+    user: {},
 }
   
 const reducer = (state=initialState, action) =>{
