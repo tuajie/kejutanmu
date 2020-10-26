@@ -1,3 +1,5 @@
+// kumpulan dari reducer redux, sebelum di eksekusi atau save ke store redux
+
 
 const initialState = {
     popup: 'Estu Jalanin Redux Global',

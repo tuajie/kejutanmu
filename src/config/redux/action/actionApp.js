@@ -1,3 +1,6 @@
+// kumpulan action untuk sebelum di ekesekusi ke reducer redux
+
+
 // set timeout memakai redux-thunx jadi nunggu delay 2 detik, baru di return/dispatch
 export const actionGantiUser = () => {
     return (dispatch) => {
