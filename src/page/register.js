@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import Button from '../component/atom/Button';
-import firebaseSetting from '../config/firebase/firebaseConfig'
+import firebaseSetting from '../config/firebase/firebaseConfig';
+import { registerUserAPI } from '../config/redux/action/actionApp';
 
 console.log('config firebase => ',firebaseSetting);
 
@@ -8,7 +10,6 @@ class Register extends Component {
     state = {
         email: '',
         password: '',
-        isLoading: false
     }
 
     // fungsi ini digunakan ketika "text area input di ketik", 
@@ -23,25 +24,15 @@ class Register extends Component {
     urusanButtonKlik = () => {
         const {email, password} = this.state
         console.log('data seblum kirim : ', email, password)
-        this.setState({
-            isLoading: true
-        })
-        setTimeout(() => {
-            this.setState({
-                isLoading: false
-            })
-        }, 3000)
-        // firebaseSetting.auth().createUserWithEmailAndPassword(email, password)
-        //     // Handle Suksess here.
-        //     .then(res => {
-        //         console.log('success: ', res);
+        this.props.registerAPI({email, password})
+        // this.setState({
+        //     isLoading: true
+        // })
+        // setTimeout(() => {
+        //     this.setState({
+        //         isLoading: false
         //     })
-        //     // Handle Errors here.
-        //     .catch(function(error) { 
-        //         var errorCode = error.code;
-        //         var errorMessage = error.message;
-        //         console.log(errorCode, errorMessage)
-        //   });
+        // }, 3000) 
     }
     
     render(){
@@ -54,11 +45,19 @@ class Register extends Component {
                 <div className="body-register">
                     <input id="email" className="form1" type="text" placeholder="email" onChange={this.urusanIsiInputText} />
                     <input id="password" className="form1" type="password" placeholder="password" onChange={this.urusanIsiInputText} />
-                    <Button diKlik={this.urusanButtonKlik} title="Register" loading={this.state.isLoading} />        
+                    <Button diKlik={this.urusanButtonKlik} title="Register" loading={this.props.isLoading} />        
                 </div>
             </Fragment>
         )
     }
 }
+
+const reduxState = (state) => ({
+    isLoading: state.isLoading
+})
+
+const reduxDispatch = (dispatch) => ({
+    registerAPI: (data) => dispatch(registerUserAPI(data))
+})
  
-export default Register;
+export default connect(reduxState, reduxDispatch)(Register);

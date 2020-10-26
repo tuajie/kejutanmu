@@ -2,8 +2,9 @@
 
 
 const initialState = {
-    popup: 'Estu Jalanin Redux Global',
+    popup: false,
     isLogin: false,
+    isLoading: false,
     user: 'BELOM ganti user'
 }
   
@@ -24,6 +25,12 @@ const reducer = (state=initialState, action) =>{
         return {
         ...state,
         user: action.value
+        }
+    }
+    if(action.type === 'CHANGE_LOADING'){
+        return {
+        ...state,
+        isLoading: action.value
         }
     }
     return state;
