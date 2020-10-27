@@ -103,24 +103,24 @@ ul li{
   background: #737373 ;
 }
 
-form{
+.isian{
   width: 400px;
   margin: 0 auto;
   background: #aeaeae;
   padding: 20px 0 0;
 }
-form textarea{
+.isian textarea{
   width: 91%;
   padding: 2%;
   min-height: 100px;
   margin-top: 20px ;
 }
 
-form input{
+.isian input{
   width: 91%;
   padding: 2%;
 }
-form button{
+.isian button{
   border: none;
   padding: 10px 20px;
   margin: 10px 0;

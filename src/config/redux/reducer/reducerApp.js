@@ -6,6 +6,7 @@ const initialState = {
     isLogin: false,
     isLoading: false,
     user: {},
+    kontenAPI: []
 }
   
 const reducer = (state=initialState, action) =>{
@@ -31,6 +32,12 @@ const reducer = (state=initialState, action) =>{
         return {
         ...state,
         isLoading: action.value
+        }
+    }
+    if(action.type === 'SET_KONTEN'){
+        return {
+        ...state,
+        kontenAPI: action.value
         }
     }
     return state;
