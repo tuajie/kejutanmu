@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { addDataToAPI, getDataFromAPI } from '../config/redux/action/actionApp';
+import { addDataToAPI, getDataFromAPI, updateDataAPI } from '../config/redux/action/actionApp';
 
 class Dashboard extends Component {
     state = {
         title: '',
         konten: '',
-        date: ''
+        date: '',
+        textButton: 'Simpan',
+        kontenId: ''
     } 
 
     componentDidMount() {
@@ -15,8 +17,8 @@ class Dashboard extends Component {
     }
 
     urusanSaveKonten = () => {
-        const {title, konten} = this.state;
-        const {saveKonten} = this.props;
+        const {title, konten, textButton, kontenId} = this.state;
+        const {saveKonten, updateDataKonten} = this.props;
         const userData = JSON.parse(localStorage.getItem('userData'))
 
         const data = {
@@ -25,7 +27,13 @@ class Dashboard extends Component {
             date: new Date().getTime(),
             userId: userData.uid
         } 
-        saveKonten(data)
+        if(textButton === 'Simpan'){
+            saveKonten(data)
+        } else {
+            data.kontenId = kontenId;
+            updateDataKonten(data)
+        }
+        
         console.log(data)
     }
 
@@ -34,12 +42,30 @@ class Dashboard extends Component {
             [type] : e.target.value
         })
     }
+    
+    updateKonten = (isiKontenAPI) => {
+        console.log(isiKontenAPI)
+        this.setState({
+            title: isiKontenAPI.data.title,
+            konten: isiKontenAPI.data.konten,
+            textButton: 'Update',
+            kontenId: isiKontenAPI.id
+        })
+    }
+
+    batalUpdate = () => {
+        this.setState({
+            title: '',
+            konten: '',
+            textButton: 'Simpan'
+        })
+    }
 
     render() {
-        const {title, konten, date} = this.state;
-        
+        const {title, konten, textButton} = this.state; 
         const { kontenAPI } = this.props;
-        // console.log('respon kontenAPI: ', kontenAPI)
+        const { updateKonten, batalUpdate } = this;
+        console.log('respon kontenAPI: ', kontenAPI)
 
         return(
             <div>
@@ -47,7 +73,13 @@ class Dashboard extends Component {
                 <div className="isian">
                     <input placeholder="Judul" value={title} onChange={(e) => this.onInputChange(e, 'title')} />
                     <textarea placeholder="Deskripsi konten" value={konten} onChange={(e) => this.onInputChange(e, 'konten')}></textarea>
-                    <button className="btn-simpan" onClick={this.urusanSaveKonten}  loading={this.props.isLoading}>Simpan</button>
+                        {
+                            textButton === 'Update' ? (
+                                <button className="btn-batal" onClick={batalUpdate} loading={this.props.isLoading}>Batal</button>
+                            ) : null
+                        } 
+                    <button className="btn-simpan" onClick={this.urusanSaveKonten}  loading={this.props.isLoading}>{textButton}</button> 
+                    <div className="clear"></div>
                 </div> 
                 {
                     kontenAPI.length > 0 ? (
@@ -55,9 +87,9 @@ class Dashboard extends Component {
                             {
                                 kontenAPI.map(isiKontenAPI => {
                                     return(
-                                        <div className="isi-firebase" key={isiKontenAPI.id}>
+                                        <div className="isi-firebase" key={isiKontenAPI.id} onClick={() => updateKonten(isiKontenAPI)}>
                                             <h6> {isiKontenAPI.data.title} </h6>
-                                            <p> {isiKontenAPI.data.date}0 </p>
+                                            <p> {isiKontenAPI.data.date}</p>
                                             <p>  {isiKontenAPI.data.konten} </p>
                                         </div>
                                     )  
@@ -80,7 +112,8 @@ const reduxState = (state) => ({
 
 const reduxDispatch = (dispatch) => ({
     saveKonten : (data) => dispatch(addDataToAPI(data)),
-    getKonten: (data) => dispatch(getDataFromAPI(data))
+    getKonten: (data) => dispatch(getDataFromAPI(data)),
+    updateDataKonten: (data) => dispatch(updateDataAPI(data))
 })
 
 export default connect(reduxState, reduxDispatch)(Dashboard);

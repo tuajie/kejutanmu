@@ -78,7 +78,7 @@ export const loginUserAPI = (data) => (dispatch) => {
 
 // fungsi action redux global, untuk menambahkan data ke API firebase
 export const addDataToAPI = (data) => (dispatch) => {
-    database.ref('konten' + data.userId).push({
+    database.ref('konten/' + data.userId).push({
         title: data.title,
         konten: data.konten,
         date: data.date
@@ -87,7 +87,7 @@ export const addDataToAPI = (data) => (dispatch) => {
 
 // fungsi action redux global untuk menarik data dari API firebase
 export const getDataFromAPI = (userId) => (dispatch) => {
-    const urlKonten = database.ref('konten' + userId);
+    const urlKonten = database.ref('konten/' + userId);
     return new Promise ((masuk, gagal) => {
         urlKonten.on('value', function(snapshot) {
             console.log('respon data API : ', snapshot.val())
@@ -101,6 +101,24 @@ export const getDataFromAPI = (userId) => (dispatch) => {
             
             dispatch({type: 'SET_KONTEN', value: data})
             masuk(snapshot.val())
+        })
+    }) 
+}
+
+// fungsi action redux global untuk update data dari API firebase
+export const updateDataAPI = (data) => (dispatch) => {
+    const urlKonten = database.ref(`konten/${data.userId}/${data.kontenId}`);
+    return new Promise ((masuk, gagal) => {
+        urlKonten.set({
+            title: data.title,
+            konten: data.konten,
+            date: data.date
+        }, (err) => {
+            if(err) {
+                masuk(false);
+            } else {
+                gagal(true)
+            }
         })
     }) 
 }

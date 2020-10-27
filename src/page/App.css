@@ -129,10 +129,35 @@ ul li{
 .isi-firebase{
   text-align: left;
   margin: 0 auto;
-  width: 400px;
-  padding: 20px 0;
+  width: 360px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  background: #ececec;
+  cursor: pointer;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.isi-firebase:hover{
+  background: #bdbdbd;
 }
 
 .isi-firebase h6{
   font-size: 32px;
+}
+.btn-batal{
+  float: left;
+  position: relative;
+  left: 2.5%;
+  background: #2b2b2b;
+  color: #fff;
+  font-weight: bold;
+}
+.btn-simpan{
+  float: right;
+  position: relative;
+  right: 2.5%; 
+}
+.clear{
+  clear: both;
 }
