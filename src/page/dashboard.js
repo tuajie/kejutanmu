@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { addDataToAPI, getDataFromAPI, updateDataAPI } from '../config/redux/action/actionApp';
+import { addDataToAPI, getDataFromAPI, updateDataAPI, deleteDataAPI } from '../config/redux/action/actionApp';
 
 class Dashboard extends Component {
     state = {
@@ -61,10 +61,21 @@ class Dashboard extends Component {
         })
     }
 
+    deleteKonten = (e, isiKontenAPI) => {
+        e.stopPropagation();
+        const {hapusKonten} = this.props;
+        const userData = JSON.parse(localStorage.getItem('userData'))
+        const data = {
+            userId: userData.uid,
+            kontenId: isiKontenAPI.id
+        }
+        hapusKonten(data) 
+    }
+
     render() {
         const {title, konten, textButton} = this.state; 
         const { kontenAPI } = this.props;
-        const { updateKonten, batalUpdate } = this;
+        const { updateKonten, batalUpdate, deleteKonten } = this;
         console.log('respon kontenAPI: ', kontenAPI)
 
         return(
@@ -91,6 +102,7 @@ class Dashboard extends Component {
                                             <h6> {isiKontenAPI.data.title} </h6>
                                             <p> {isiKontenAPI.data.date}</p>
                                             <p>  {isiKontenAPI.data.konten} </p>
+                                            <div className="btn-delete" onClick={(e) => deleteKonten(e, isiKontenAPI)}> X </div>
                                         </div>
                                     )  
                                 }) 
@@ -113,7 +125,8 @@ const reduxState = (state) => ({
 const reduxDispatch = (dispatch) => ({
     saveKonten : (data) => dispatch(addDataToAPI(data)),
     getKonten: (data) => dispatch(getDataFromAPI(data)),
-    updateDataKonten: (data) => dispatch(updateDataAPI(data))
+    updateDataKonten: (data) => dispatch(updateDataAPI(data)),
+    hapusKonten: (data) => dispatch(deleteDataAPI(data)),
 })
 
 export default connect(reduxState, reduxDispatch)(Dashboard);

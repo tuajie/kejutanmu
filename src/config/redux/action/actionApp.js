@@ -122,3 +122,11 @@ export const updateDataAPI = (data) => (dispatch) => {
         })
     }) 
 }
+
+// fungsi action redux global untuk delete data dari API firebase
+export const deleteDataAPI = (data) => (dispatch) => {
+    const urlKonten = database.ref(`konten/${data.userId}/${data.kontenId}`);
+    return new Promise ((masuk, gagal) => {
+        urlKonten.remove()
+    }) 
+}

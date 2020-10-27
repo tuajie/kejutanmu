@@ -137,6 +137,7 @@ ul li{
   border: 1px solid #c7c7c7;
   border-radius: 6px;
   transition: 0.3s;
+  position: relative;
 }
 .isi-firebase:hover{
   background: #bdbdbd;
@@ -160,4 +161,21 @@ ul li{
 }
 .clear{
   clear: both;
+}
+.btn-delete{
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: #ff4c4c;
+  width: fit-content;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 12px;
+  transition: 0.3s;
+} 
+.btn-delete:hover{
+  background: red;
 }
