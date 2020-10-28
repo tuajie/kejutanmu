@@ -81,6 +81,7 @@ class Dashboard extends Component {
         return(
             <div>
                 <h4>Dashboard Page</h4>
+ 
                 <div className="isian">
                     <input placeholder="Judul" value={title} onChange={(e) => this.onInputChange(e, 'title')} />
                     <textarea placeholder="Deskripsi konten" value={konten} onChange={(e) => this.onInputChange(e, 'konten')}></textarea>

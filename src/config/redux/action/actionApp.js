@@ -13,7 +13,7 @@ export const actionGantiUser = () => {
 }
 
 
-// fungsi action untuk konek aplikasi ke firebaseSetting, kemudian di kirim ke reducer
+// fungsi action register untuk konek aplikasi ke firebaseSetting, kemudian di kirim ke reducer
 export const registerUserAPI = (data) => (dispatch) => {
     return new Promise((masuk, gagal) => {
         // ini untuk men dispatch CHANGE_LOADING menjadi true 

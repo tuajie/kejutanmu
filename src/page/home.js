@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const Home = () =>{
-    return(
-        <div className="App">
-            <div className="App-header"> 
-                <p> Estu Edit <code>src/App.js</code> and save to reload.</p> 
+class Home extends Component {
+    render() {
+        return(
+            <div className="App">
+                <div className="member">
+                    <p>Email</p>
+                    <p>Terverifikasi</p>
+                    <div className="btn-kluar">Logout</div>
+                </div>
+    
+                <div>
+                    <h2>Test Body</h2> 
+                </div>
+    
+                <footer>
+                    <h3>Test Footer</h3>
+                </footer>
             </div>
-
-            <div>
-                <h2>Test Body</h2> 
-            </div>
-
-            <footer>
-                <h3>Test Footer</h3>
-            </footer>
-        </div>
-    )
+        )
+    }
+    
 }
 
-export default Home;
+export default connect()(Home);
